@@ -39,3 +39,43 @@ Class Task
                 Output "Task unstarred."
             End If
         End Function
+        
+        Function addSubtask()
+            Output "Enter subtask title: "
+            Input subTitle
+            Output "Enter subtask deadline (YYYY-MM-DD): "
+            Input subDeadline
+            Create new Task sub
+            sub.taskID   <- size of subtasks + 1
+            sub.title    <- subTitle
+            sub.deadline <- subDeadline
+            sub.isCompleted <- false
+            sub.isStarred   <- false
+            Append sub to subtasks
+            Output "Subtask added."
+        End Function
+
+        Function reschedule()
+            Output "Enter new deadline (YYYY-MM-DD): "
+            Input newDeadline
+            deadline <- newDeadline
+            Output "Task " + title + " rescheduled to " + deadline
+        End Function
+
+        Function display()
+            Output "[" + title + " Task ID: " + taskID + "]"
+                + (IF isStarred THEN "* " ELSE "  ")
+                + (IF isCompleted THEN "[DONE] " ELSE "[    ] ")
+                + title + " (Due: " + deadline + ")"
+            if notes is not empty THEN
+                Output "Notes: " + notes
+            End if
+            if subtasks is not empty
+                Output "Subtasks:"
+                for each sub IN subtasks DO
+                    sub.display()
+                End for
+            End if
+        End Function
+        
+End Class
