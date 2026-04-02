@@ -1,0 +1,41 @@
+Class Task
+
+    Private:
+        taskID      -> integer
+        title       -> string
+        deadline    -> string
+        isCompleted -> boolean
+        isStarred   -> boolean
+        notes       -> string
+        subtasks    -> list of Task
+
+    Public:
+
+        Function markDone()
+            isCompleted <- true
+            Output "Task: ", title, " marked as done."
+        End Function
+
+        Function markUndone()
+            isCompleted <- false
+            Output "Task: ", title, " marked as not done."
+        End Function
+
+        Function addNote()
+            Output "Enter note: "
+            Input input
+            If notes is not empty Then
+                notes <- notes + newline
+            End If
+            notes <- notes + input
+            Output "Note added."
+        End Function
+
+        Function starTask()
+            isStarred <- NOT isStarred
+            If isStarred Then
+                Output "Task starred."
+            Else
+                Output "Task unstarred."
+            End If
+        End Function
